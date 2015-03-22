@@ -59,5 +59,10 @@ node default {
     command => '/usr/bin/npm update',
     require => File['/usr/bin/npm']
   }
+  service { 'hubot':
+    ensure  => running,
+    require => [File['/usr/bin/npm', '/usr/bin/node', '/etc/init/hubot.conf']
+    , VcsRepo['/opt/hubot']]
+  }
 }
 
