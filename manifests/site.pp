@@ -10,5 +10,17 @@ node default {
   package { 'redis-server':
     ensure => present
   }
+  #groups/users
+  group { 'deploy':
+    ensure => present
+  }
+  user { 'deploy':
+    ensure      => present,
+    managehome  => true,
+    gid         => 'deploy',
+    groups      => 'sudo'
+  } ->
+  ssh_keygen { 'deploy' : }
+
 }
 
