@@ -1,5 +1,4 @@
 # hubot
- 
 description "Hubot Slack bot"
  
 start on filesystem or runlevel [2345]
@@ -15,7 +14,7 @@ env HUBOT_USER='hubot'
 env PORT='5555'
  
 # Slack-specific environment variables
-env HUBOT_SLACK_TOKEN=''
+env HUBOT_SLACK_TOKEN="<%= scope.function_hiera(["hubot::slack_token"])%>"
  
 # Keep the process alive, limit to 5 restarts in 60s
 respawn

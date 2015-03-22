@@ -1,0 +1,4 @@
+---
+hubot::git_url: "https://github.com/hyleung/my-hubot.git"
+hubot::home: "/opt/hubot"
+hubot::slack_token: "some_token"

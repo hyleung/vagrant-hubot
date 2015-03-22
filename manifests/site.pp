@@ -36,29 +36,28 @@ node default {
   vcsrepo { '/opt/hubot':
     ensure   => present,
     provider => git,
-    source   => 'https://github.com/hyleung/my-hubot.git',
+    source   => hiera('hubot::git_url'),
     owner    => 'hubot',
     group    => 'deploy',
     require  => User['hubot']
   }
-
   file { '/etc/init/hubot.conf':
-    ensure => file,
-    source => '/vagrant/files/hubot.conf'
+    ensure    => file,
+    content   => template('/vagrant/files/hubot.conf.erb')
   }
   file { '/usr/bin/npm':
-    ensure => link,
-    target => '/usr/local/node/node-default/bin/npm',
+    ensure  => link,
+    target  => '/usr/local/node/node-default/bin/npm',
     require => Class['nodejs']
   }
   file { '/usr/bin/node':
-    ensure => link,
-    target => '/usr/local/node/node-default/bin/node',
+    ensure  => link,
+    target  => '/usr/local/node/node-default/bin/node',
     require => Class['nodejs']
   }
   exec { 'npm-update':
     command => '/usr/bin/npm update',
-    require => File['/usr/bin/npm'] 
+    require => File['/usr/bin/npm']
   }
 }
 
