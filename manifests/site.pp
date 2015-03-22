@@ -46,9 +46,19 @@ node default {
     ensure => file,
     source => '/vagrant/files/hubot.conf'
   }
-  exec { 'npm-update':
-    command => '/usr/local/node/node-default/bin/npm update',
+  file { '/usr/bin/npm':
+    ensure => link,
+    target => '/usr/local/node/node-default/bin/npm',
     require => Class['nodejs']
+  }
+  file { '/usr/bin/node':
+    ensure => link,
+    target => '/usr/local/node/node-default/bin/node',
+    require => Class['nodejs']
+  }
+  exec { 'npm-update':
+    command => '/usr/bin/npm update',
+    require => File['/usr/bin/npm'] 
   }
 }
 
