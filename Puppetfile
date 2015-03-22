@@ -9,6 +9,8 @@ forge "http://forge.puppetlabs.com"
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/apt'
 mod 'maestrodev/ssh_keygen'
+mod 'puppetlabs/vcsrepo'
+mod 'willdurand/nodejs'
 #
 #
 # mod 'ntp',
