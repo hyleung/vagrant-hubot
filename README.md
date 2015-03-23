@@ -21,5 +21,7 @@ Start the VM
 
     vagrant up
 
+##Note
 
+Assumes that the version of Puppet installed on the box supports Hiera.
 
