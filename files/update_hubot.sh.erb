@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+sudo service hubot stop
+rm master.zip
+wget <%= scope.function_hiera(["hubot::git_archive_url"])%>
+
+zip hubot_bak.zip -qr /opt/hubot
+rm -rf /opt/hubot/*
+rm -rf <%= scope.function_hiera(["hubot::git_repo"])%>
+unzip master.zip
+mv <%= scope.function_hiera(["hubot::git_repo"])%>-master/* /opt/hubot
+rm -rf <%= scope.function_hiera(["hubot::git_repo"])%>-master
+sudo service hubot start

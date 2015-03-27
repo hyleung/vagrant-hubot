@@ -11,6 +11,7 @@ mod 'puppetlabs/apt'
 mod 'maestrodev/ssh_keygen'
 mod 'puppetlabs/vcsrepo'
 mod 'willdurand/nodejs'
+mod 'saz/sudo'
 #
 #
 # mod 'ntp',

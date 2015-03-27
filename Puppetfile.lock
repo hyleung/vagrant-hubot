@@ -1,20 +1,23 @@
 FORGE
-  remote: http://forge.puppetlabs.com
+  remote: https://forgeapi.puppetlabs.com
   specs:
-    maestrodev-ssh_keygen (1.2.0)
-    maestrodev-wget (1.5.7)
-    puppetlabs-apt (1.8.0)
-      puppetlabs-stdlib (>= 2.2.1)
-    puppetlabs-stdlib (4.5.1)
-    puppetlabs-vcsrepo (1.2.0)
-    willdurand-nodejs (1.8.5)
-      maestrodev-wget (>= 1.2.0)
-      puppetlabs-stdlib (>= 3.2.1)
+    maestrodev/ssh_keygen (1.2.0)
+    maestrodev/wget (1.5.7)
+    puppetlabs/apt (1.8.0)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/stdlib (4.5.1)
+    puppetlabs/vcsrepo (1.2.0)
+    saz/sudo (3.0.9)
+      puppetlabs/stdlib (>= 2.3.0)
+    willdurand/nodejs (1.8.5)
+      maestrodev/wget (>= 1.2.0)
+      puppetlabs/stdlib (>= 3.2.1)
 
 DEPENDENCIES
-  maestrodev-ssh_keygen (>= 0)
-  puppetlabs-apt (>= 0)
-  puppetlabs-stdlib (>= 0)
-  puppetlabs-vcsrepo (>= 0)
-  willdurand-nodejs (>= 0)
+  maestrodev/ssh_keygen (>= 0)
+  puppetlabs/apt (>= 0)
+  puppetlabs/stdlib (>= 0)
+  puppetlabs/vcsrepo (>= 0)
+  saz/sudo (>= 0)
+  willdurand/nodejs (>= 0)
 

@@ -10,6 +10,13 @@ node default {
   package { 'redis-server':
     ensure => present
   }
+  package { 'zip':
+    ensure => present
+  }
+  package { 'unzip':
+    ensure => present
+  }
+
   #nodejs
   class { 'nodejs':
     version => 'v0.10.25',
@@ -33,6 +40,16 @@ node default {
     groups      => 'sudo'
   }
 
+  class { 'sudo':
+    purge               => false,
+    config_file_replace => false
+  }
+
+  sudo::conf { 'deploy':
+      priority => 10,
+      content  => '%deploy ALL= NOPASSWD: ALL',
+  }
+
   vcsrepo { '/opt/hubot':
     ensure   => present,
     provider => git,
@@ -44,6 +61,11 @@ node default {
   file { '/etc/init/hubot.conf':
     ensure    => file,
     content   => template('/vagrant/files/hubot.conf.erb')
+  }
+  file { '/home/hubot/update_hubot.sh':
+    ensure  => file,
+    content => template('/vagrant/files/update_hubot.sh.erb'),
+    require => User['hubot']
   }
   file { '/usr/bin/npm':
     ensure  => link,
